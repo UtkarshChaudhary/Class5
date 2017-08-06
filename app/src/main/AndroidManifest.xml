@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.lenovo.class5">
+<uses-permission android:name="android.permission.READ_PHONE_STATE"><!-- for taking permission to read phone state-->
+
+</uses-permission>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- we can set multiple intent receiver corresponding to one receiver -->
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_LOW" /> <!-- notify when battery is low -->
+
+            </intent-filter>
+        </receiver>
+        <!--enable denotes state of revceiver so that it can be notified when receiver is generated  -->
+        <!--exported means ability of receiver which enabled it to receive broadcast generated outside the app-->
+        <receiver
+            android:name=".MyReceiver2"
+            android:enabled="true"
+
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" /><!-- to read phone state -->
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
